@@ -8,10 +8,11 @@ node
         sh 'make test'
 	script 
 	{
-             def testResults = findFiles(glob: '**/reports/*.xml')
+             echo "*******************"
+	     def testResults = findFiles(glob: '**/reports/*.xml')
              for(xml in testResults) 
 	     {
-		echo xml.getPath()
+		echo "${xml.getPath()}"
              	touch xml.getPath()
 	     }
         }    

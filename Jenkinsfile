@@ -6,7 +6,15 @@ node
     {
         stage 'Run unit/integration tests'
         sh 'make test'
-        
+	script 
+	{
+             def testResults = findFiles(glob: '**/reports/*.xml')
+             for(xml in testResults) 
+	     {
+             	touch xml.getPath()
+	     }
+        }    
+
         stage 'Build application artefacts'
         sh 'make build'
 
